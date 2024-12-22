@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Buddy</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 Study Buddy</h1>
+            <p>Upload your documents and chat with an AI assistant.</p>
+        </header>
+
+        <main>
+            <div class="file-upload">
+                <label for="fileInput">📄 Upload a PDF File:</label>
+                <input type="file" id="fileInput" accept=".pdf">
+                <button id="uploadBtn">Upload File</button>
+                <p id="uploadStatus"></p>
+            </div>
+
+            <div id="chatContainer" class="hidden">
+                <div id="chatWindow">
+                    <!-- Messages will be appended here -->
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="userMessage" placeholder="Type your question...">
+                    <button id="sendMessage">Send</button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>🔥 Powered by OpenAI | Designed with 💖</p>
+        </footer>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

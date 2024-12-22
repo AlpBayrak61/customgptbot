@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
             uploadStatus.textContent = "File uploaded successfully!";
             chatContainer.classList.remove("hidden");
         } catch (error) {
-            console.error(error);
+            console.error("Error uploading file:", error);
             uploadStatus.textContent = "Failed to upload the file.";
         }
     });
@@ -42,7 +42,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // Send a message
     sendMessage.addEventListener("click", async () => {
         const message = userMessage.value.trim();
-        if (!message) return;
+        console.log("User clicked Send. Message:", message);
+
+        if (!message) {
+            console.log("No message entered.");
+            return;
+        }
 
         // Display the user's message in the chat
         const userBubble = document.createElement("div");
@@ -53,6 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Call OpenAI API for assistant's response
         try {
+            console.log("Sending message to OpenAI API...");
             const response = await fetch("https://api.openai.com/v1/chat/completions", {
                 method: "POST",
                 headers: {
@@ -66,6 +72,8 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             const result = await response.json();
+            console.log("API Response:", result);
+
             const assistantMessage = result.choices[0].message.content;
 
             // Display the assistant's message in the chat
@@ -75,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
             chatWindow.appendChild(assistantBubble);
             chatWindow.scrollTop = chatWindow.scrollHeight;
         } catch (error) {
-            console.error(error);
+            console.error("Error during API request:", error);
             const errorBubble = document.createElement("div");
             errorBubble.textContent = "Error: Unable to get a response.";
             errorBubble.classList.add("assistant");

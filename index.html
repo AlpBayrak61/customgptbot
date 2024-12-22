@@ -3,39 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Study Buddy</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>ASTRUM AI HELPER</title>
+    <style>
+        /* General body styling for a space theme */
+        body {
+            background: linear-gradient(to bottom, #000428, #004e92);
+            color: #f1f1f1;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Container styling */
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1); /* Transparent white */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px); /* Frosted glass effect */
+        }
+
+        /* Header styling */
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            color: #ffdd57;
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(255, 221, 87, 0.7);
+        }
+
+        header p {
+            color: #ffffff;
+            font-size: 1.2em;
+        }
+
+        /* File upload section */
+        .file-upload {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .file-upload label {
+            font-size: 1.2em;
+            color: #ffdd57;
+            display: block;
+            margin-bottom: 10px;
+            text-shadow: 0 0 15px rgba(255, 221, 87, 0.7);
+        }
+
+        .file-upload input[type="file"] {
+            display: inline-block;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+
+        .file-upload button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #ffdd57;
+            color: #000428;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 221, 87, 0.7);
+        }
+
+        .file-upload button:hover {
+            background-color: #ffe680;
+        }
+
+        #uploadStatus {
+            margin-top: 10px;
+            font-style: italic;
+            color: #ffdd57;
+        }
+
+        /* Chat container */
+        #chatContainer {
+            margin-top: 20px;
+        }
+
+        #chatWindow {
+            height: 300px;
+            overflow-y: auto;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 5px;
+            background: rgba(0, 0, 0, 0.6);
+            color: #f1f1f1;
+        }
+
+        #chatWindow div {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        #chatWindow .user {
+            background-color: #004e92;
+            color: #fff;
+            text-align: right;
+        }
+
+        #chatWindow .assistant {
+            background-color: #ffdd57;
+            color: #000428;
+            text-align: left;
+        }
+
+        /* Chat input styling */
+        .chat-input {
+            display: flex;
+            margin-top: 10px;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            margin-right: 5px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        .chat-input button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #ffdd57;
+            color: #000428;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            text-shadow: 0 0 10px rgba(255, 221, 87, 0.7);
+        }
+
+        .chat-input button:hover {
+            background-color: #ffe680;
+        }
+
+        /* Footer styling */
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #ffdd57;
+            text-shadow: 0 0 15px rgba(255, 221, 87, 0.7);
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>📚 Study Buddy</h1>
-            <p>Upload your documents and chat with an AI assistant.</p>
+            <h1>🌌 ASTRUM AI HELPER</h1>
+            <p>Upload your documents and chat with a cosmic AI assistant.</p>
         </header>
 
-        <main>
-            <div class="file-upload">
-                <label for="fileInput">📄 Upload a PDF File:</label>
-                <input type="file" id="fileInput" accept=".pdf">
-                <button id="uploadBtn">Upload File</button>
-                <p id="uploadStatus"></p>
-            </div>
+        <!-- File upload section -->
+        <div class="file-upload">
+            <label for="fileInput">📄 Upload a PDF File:</label>
+            <input type="file" id="fileInput" accept=".pdf">
+            <button id="uploadBtn">Upload File</button>
+            <p id="uploadStatus"></p>
+        </div>
 
-            <div id="chatContainer" class="hidden">
-                <div id="chatWindow">
-                    <!-- Messages will be appended here -->
-                </div>
-                <div class="chat-input">
-                    <input type="text" id="userMessage" placeholder="Type your question...">
-                    <button id="sendMessage">Send</button>
-                </div>
+        <!-- Chat container -->
+        <div id="chatContainer" class="hidden">
+            <div id="chatWindow">
+                <!-- Messages will be appended here -->
             </div>
-        </main>
+            <div class="chat-input">
+                <input type="text" id="userMessage" placeholder="Type your cosmic question...">
+                <button id="sendMessage">Send</button>
+            </div>
+        </div>
 
         <footer>
-            <p>🔥 Powered by OpenAI | Designed with 💖</p>
+            <p>| Powered by OpenAI |</p>
         </footer>
     </div>
-    <script src="app.js"></script>
 </body>
 </html>

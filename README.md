@@ -1,4 +1,4 @@
-                                                                                                    ASTRUM CUSTOM CHATBOT
+- ASTRUM CUSTOM CHATBOT
 
 Welcome to the Custom Code Helper Chatbot! This project provides a streamlined, customizable chatbot to assist developers with coding questions and challenges. The only setup required is to replace the default API key with your own OpenAI ChatGPT key.
 🚀 Features
